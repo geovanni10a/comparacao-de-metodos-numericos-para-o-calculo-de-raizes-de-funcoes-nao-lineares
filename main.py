@@ -4,8 +4,9 @@ Uma Implementação em Python.
 Ponto de entrada: repete os experimentos, a análise comparativa, a verificação,
 a exportação dos dados e os gráficos.
 
-Requisitos: Python 3.10 ou superior. Os cálculos usam só a biblioteca padrão;
-o Matplotlib é necessário apenas para gerar as figuras.
+Requisitos: Python 3.11 ou superior, por exigência do Matplotlib fixado em
+requirements.txt. Os cálculos usam só a biblioteca padrão; o Matplotlib é
+necessário apenas para gerar as figuras.
 
 Uso:
     python -m pip install -r requirements.txt

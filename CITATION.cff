@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Se você usar este software, cite-o conforme estes dados."
+type: software
+title: "Comparação de Métodos Numéricos para o Cálculo de Raízes de Funções Não Lineares: Uma Implementação em Python"
+authors:
+  - alias: "geovanni10a"
+version: 1.0.0
+date-released: 2026-11-08
+license: MIT
+url: "https://github.com/geovanni10a/comparacao-de-metodos-numericos-para-o-calculo-de-raizes-de-funcoes-nao-lineares"
+repository-code: "https://github.com/geovanni10a/comparacao-de-metodos-numericos-para-o-calculo-de-raizes-de-funcoes-nao-lineares"
+keywords:
+  - cálculo numérico
+  - raízes de funções
+  - bisseção
+  - newton-raphson
+  - secante
+  - python
