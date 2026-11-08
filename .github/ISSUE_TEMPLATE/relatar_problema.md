@@ -17,4 +17,4 @@ labels: bug
 
 - Sistema operacional:
 - Versão do Python:
-- Forma de execução (`main.py`, `interface.py` ou `.exe`):
+- Forma de execução (terminal, interface ou `.exe`):

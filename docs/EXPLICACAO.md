@@ -29,21 +29,21 @@ O objetivo deste trabalho é comparar experimentalmente três métodos clássico
 medições com as previsões teóricas. A demonstração computacional é reprodutível: um único comando
 repete os experimentos, verifica os resultados e exporta os dados brutos.
 
-Todos os números citados vêm da execução de `python main.py`, com tolerância `tol = 1e-12`.
+Todos os números citados vêm da execução de `python -m raizes_numericas`, com tolerância `tol = 1e-12`.
 
-O código completo está nos arquivos do projeto:
+O código completo está em `src/raizes_numericas/`, e os testes em `tests/`:
 
 | Arquivo | Conteúdo |
 |---|---|
-| `main.py` | Ponto de entrada: executa experimentos, análise e gráficos |
-| `raizes.py` | Os três métodos e as três funções estudadas |
+| `__main__.py` | Ponto de entrada: executa experimentos, análise e gráficos |
+| `metodos.py` | Os três métodos e as três funções estudadas |
 | `analise.py` | Análise comparativa |
-| `verificacao.py` | Verificação dos resultados e exportação para `resultados/` |
-| `graficos.py` | Gráficos e tabela em imagem, gravados em `figuras/` |
+| `verificacao.py` | Verificação dos resultados e exportação para `resultados/dados/` |
+| `graficos.py` | Gráficos e tabela em imagem, gravados em `resultados/figuras/` |
 | `interface.py` | Interface gráfica da demonstração |
-| `construir_exe.bat` | Gera o executável `dist\RaizesNumericas.exe` |
-| `teste_*.py` | Testes automáticos (`python -m unittest`) |
-| `requirements.txt` | Versão do Matplotlib usada |
+| `scripts/construir_exe.bat` | Gera o executável `dist\RaizesNumericas.exe` |
+| `tests/test_*.py` | Testes automáticos (`python -m unittest discover -s tests`) |
+| `pyproject.toml` | Metadados do projeto e versão do Matplotlib |
 
 ## 2. Funcionamento matemático de cada método
 
@@ -202,9 +202,9 @@ em ponto flutuante de precisão dupla (IEEE, 2019) e Matplotlib 3.11.2 (HUNTER, 
 figuras. Para repetir tudo:
 
 ```
-python -m pip install -r requirements.txt
-python main.py
-python -m unittest
+python -m pip install -e .
+python -m raizes_numericas
+python -m unittest discover -s tests
 ```
 
 ## 5. Significado de cada variável
@@ -258,7 +258,7 @@ python -m unittest
 
 ## 6. Função de cada parte do código
 
-### `raizes.py`
+### `metodos.py`
 
 | Parte | Função |
 |---|---|
@@ -285,18 +285,18 @@ python -m unittest
 | `VANTAGENS_LIMITACOES`, `CONCLUSAO` | Texto da análise |
 | `imprimir_*` | Montam o relatório |
 
-### `verificacao.py`, `graficos.py` e `main.py`
+### `verificacao.py`, `graficos.py` e `__main__.py`
 
 | Parte | Função |
 |---|---|
 | `certifica_raiz` | Prova, pela troca de sinal, que há raiz junto ao resultado |
 | `constante_erro`, `desvio_lei_erro` | Comparam o erro medido com o previsto pela teoria |
 | `verificar`, `imprimir_verificacao` | Executam e mostram as 22 verificações |
-| `exportar_resultados` | Grava os dados em `resultados/` com todos os dígitos |
+| `exportar_resultados` | Grava os dados em `resultados/dados/` com todos os dígitos |
 | `grafico_funcoes` | Desenha as funções e marca as raízes |
 | `grafico_iteracoes` | Compara o número de iterações em barras |
 | `tabela_comparativa` | Gera a tabela de resultados em imagem |
-| `gerar_figuras` | Grava as três imagens em `figuras/` |
+| `gerar_figuras` | Grava as três imagens em `resultados/figuras/` |
 | `main` | Executa tudo; sem Matplotlib, pula as figuras; termina com erro se alguma verificação falhar |
 
 ### Proteções numéricas
@@ -400,7 +400,7 @@ Newton-Raphson por avaliação é `2^(1/2) ≈ 1,41`, menor que o `1,618` da Sec
 ## 9. Verificação dos resultados
 
 Cada resultado é confrontado com um fato matemático que não depende do método que o produziu. O
-limite de concordância de 10% para as leis de erro foi fixado antes da execução. `python main.py`
+limite de concordância de 10% para as leis de erro foi fixado antes da execução. `python -m raizes_numericas`
 termina com erro se qualquer verificação falhar.
 
 | Verificação | Quantidade | Resultado |
@@ -421,8 +421,8 @@ Avaliação das hipóteses:
   `x³ − 2x + 2`. A Bisseção foi a mais lenta, mas não se aplica a `(x − 1)²`. Esses exemplos não
   constituem uma prova geral.
 
-Os dados brutos ficam em `resultados/resultados.csv` (resultado final de cada método) e
-`resultados/historico.csv` (cada iteração). Os números são gravados com todos os dígitos, para que
+Os dados brutos ficam em `resultados/dados/resultados.csv` (resultado final de cada método) e
+`resultados/dados/historico.csv` (cada iteração). Os números são gravados com todos os dígitos, para que
 qualquer leitor possa recalcular as tabelas deste texto.
 
 ## 10. Limitações do experimento

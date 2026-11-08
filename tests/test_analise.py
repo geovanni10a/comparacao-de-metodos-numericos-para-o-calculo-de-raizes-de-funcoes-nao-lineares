@@ -1,12 +1,12 @@
 import unittest
 
-from analise import (
+from raizes_numericas.analise import (
     RAIZES_REFERENCIA,
     estabilidade,
     iteracoes_ate_erro,
     ordem_estimada,
 )
-from raizes import FUNCOES, Resultado
+from raizes_numericas.metodos import FUNCOES, Resultado
 
 
 def resultado_com(aproximacoes, iteracoes):

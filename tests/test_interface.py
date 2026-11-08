@@ -2,7 +2,7 @@ import unittest
 
 from matplotlib.figure import Figure
 
-from interface import (
+from raizes_numericas.interface import (
     desenhar_convergencia,
     desenhar_funcao,
     desenhar_iteracoes,

@@ -1,4 +1,4 @@
-"""Interface gráfica da demonstração. Rodar: `python interface.py`.
+"""Interface gráfica da demonstração. Rodar: `python -m raizes_numericas.interface`.
 
 Permite escolher a função, alterar intervalos, valores iniciais e tolerância,
 e ver os resultados, os gráficos e a análise completa.
@@ -14,10 +14,10 @@ from tkinter import scrolledtext, ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 
-from analise import RAIZES_REFERENCIA, imprimir_analise
-from graficos import CORES_METODOS, CURVA, DESTAQUE, EIXO, GRADE, SUPERFICIE, TEXTO, TEXTO_SECUNDARIO, TITULOS
-from raizes import FUNCOES, MAX_ITER, TOL, _avaliar, bissecao, newton_raphson, secante
-from verificacao import imprimir_verificacao
+from .analise import RAIZES_REFERENCIA, imprimir_analise
+from .graficos import CORES_METODOS, CURVA, DESTAQUE, EIXO, GRADE, SUPERFICIE, TEXTO, TEXTO_SECUNDARIO, TITULOS
+from .metodos import FUNCOES, MAX_ITER, TOL, _avaliar, bissecao, newton_raphson, secante
+from .verificacao import imprimir_verificacao
 
 TITULO = "Comparação de Métodos Numéricos para o Cálculo de Raízes de Funções Não Lineares"
 SUBTITULO = "Uma Implementação em Python"

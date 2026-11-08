@@ -2,9 +2,9 @@ import csv
 import tempfile
 import unittest
 
-from analise import RAIZES_REFERENCIA
-from raizes import Resultado, executar_experimentos
-from verificacao import certifica_raiz, desvio_lei_erro, exportar_resultados, verificar
+from raizes_numericas.analise import RAIZES_REFERENCIA
+from raizes_numericas.metodos import Resultado, executar_experimentos
+from raizes_numericas.verificacao import certifica_raiz, desvio_lei_erro, exportar_resultados, verificar
 
 
 class TesteVerificacao(unittest.TestCase):

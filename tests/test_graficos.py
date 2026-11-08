@@ -1,7 +1,7 @@
 import tempfile
 import unittest
 
-from graficos import gerar_figuras
+from raizes_numericas.graficos import gerar_figuras
 
 
 class TesteGraficos(unittest.TestCase):

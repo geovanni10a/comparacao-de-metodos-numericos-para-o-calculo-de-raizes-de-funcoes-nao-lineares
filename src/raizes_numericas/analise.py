@@ -1,15 +1,15 @@
 """Análise comparativa dos métodos: iterações, precisão, velocidade e estabilidade.
 
-Rodar `python analise.py` repete toda a análise. Nada aqui usa números aleatórios.
+Rodar `python -m raizes_numericas.analise` repete toda a análise. Nada aqui usa números aleatórios.
 """
 
 import math
 from statistics import linear_regression, median
 
-from raizes import FUNCOES, bissecao, executar_experimentos, newton_raphson, secante
+from .metodos import FUNCOES, bissecao, executar_experimentos, newton_raphson, secante
 
 # Raízes de referência, independentes dos métodos comparados.
-# teste_analise.py confirma que f troca de sinal em volta de cada uma.
+# tests/test_analise.py confirma que f troca de sinal em volta de cada uma.
 RAIZES_REFERENCIA = {
     "x**3 - x - 2": 1.5213797068045676,
     "cos(x) - x": 0.7390851332151607,

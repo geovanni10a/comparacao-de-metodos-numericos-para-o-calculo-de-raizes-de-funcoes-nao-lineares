@@ -5,28 +5,28 @@ Ponto de entrada: repete os experimentos, a análise comparativa, a verificaçã
 a exportação dos dados e os gráficos.
 
 Requisitos: Python 3.11 ou superior, por exigência do Matplotlib fixado em
-requirements.txt. Os cálculos usam só a biblioteca padrão; o Matplotlib é
+pyproject.toml. Os cálculos usam só a biblioteca padrão; o Matplotlib é
 necessário apenas para gerar as figuras.
 
 Uso:
-    python -m pip install -r requirements.txt
-    python main.py
+    python -m pip install -e .
+    python -m raizes_numericas
 """
 
 import sys
 
-from analise import imprimir_analise
-from raizes import imprimir_experimentos
-from verificacao import exportar_resultados, imprimir_verificacao
+from .analise import imprimir_analise
+from .metodos import imprimir_experimentos
+from .verificacao import exportar_resultados, imprimir_verificacao
 
 
 def gerar_figuras_se_possivel():
     # Importado aqui para os cálculos continuarem funcionando sem o Matplotlib.
     try:
-        from graficos import gerar_figuras
+        from .graficos import gerar_figuras
     except ImportError:
         print("\nMatplotlib não encontrado: figuras não geradas.")
-        print("Para instalar: python -m pip install -r requirements.txt")
+        print("Para instalar: python -m pip install -e .")
         return
 
     print("\nFiguras geradas:")

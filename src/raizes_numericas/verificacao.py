@@ -1,15 +1,15 @@
 """Verificação automática dos resultados e exportação dos dados brutos.
 
 As verificações confrontam cada resultado com um fato matemático que não depende
-do método que o produziu. Rodar `python verificacao.py` repete todas elas.
+do método que o produziu. Rodar `python -m raizes_numericas.verificacao` repete todas elas.
 """
 
 import csv
 import math
 from pathlib import Path
 
-from analise import LIMITE_ARREDONDAMENTO, RAIZES_REFERENCIA
-from raizes import FUNCOES, MAX_ITER, TOL, executar_experimentos
+from .analise import LIMITE_ARREDONDAMENTO, RAIZES_REFERENCIA
+from .metodos import FUNCOES, MAX_ITER, TOL, executar_experimentos
 
 SEGUNDAS_DERIVADAS = {
     "x**3 - x - 2": lambda x: 6 * x,
@@ -18,7 +18,8 @@ SEGUNDAS_DERIVADAS = {
 }
 DELTA_CERTIFICADO = 1e-11  # meia-largura do intervalo que deve conter a raiz
 DESVIO_MAXIMO_LEI_ERRO = 0.10  # concordância exigida entre erro medido e previsto
-PASTA_RESULTADOS = Path(__file__).parent / "resultados"
+# Relativa à pasta de execução: um pacote instalado não deve gravar dentro de si mesmo.
+PASTA_RESULTADOS = Path("resultados") / "dados"
 
 
 def certifica_raiz(f, x, delta=DELTA_CERTIFICADO):

@@ -1,4 +1,4 @@
-"""Gráficos e tabela comparativa, salvos em figuras/. Rodar: `python graficos.py`."""
+"""Gráficos e tabela comparativa, salvos em resultados/figuras/. Rodar: `python -m raizes_numericas.graficos`."""
 
 from pathlib import Path
 
@@ -7,7 +7,7 @@ import matplotlib
 matplotlib.use("Agg")  # só grava arquivos: funciona sem janela gráfica
 import matplotlib.pyplot as plt
 
-from raizes import FUNCOES, executar_experimentos
+from .metodos import FUNCOES, executar_experimentos
 
 # Paleta validada para daltonismo; cada método mantém a mesma cor em todos os gráficos.
 SUPERFICIE = "#fcfcfb"
@@ -19,7 +19,8 @@ CURVA = "#2a78d6"
 DESTAQUE = "#eb6834"
 CORES_METODOS = {"Bisseção": "#2a78d6", "Newton-Raphson": "#eb6834", "Secante": "#1baf7a"}
 TITULOS = {"x**3 - x - 2": "f(x) = x³ − x − 2", "cos(x) - x": "f(x) = cos(x) − x", "exp(-x) - x": "f(x) = e⁻ˣ − x"}
-PASTA_FIGURAS = Path(__file__).parent / "figuras"
+# Relativa à pasta de execução: um pacote instalado não deve gravar dentro de si mesmo.
+PASTA_FIGURAS = Path("resultados") / "figuras"
 
 plt.rcParams.update(
     {

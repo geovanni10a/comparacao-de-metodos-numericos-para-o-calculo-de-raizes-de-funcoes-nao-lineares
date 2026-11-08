@@ -15,4 +15,4 @@ Inclua, no canal privado, a descrição do problema, os passos para reproduzi-lo
 ## Executável
 
 O `.exe` não é distribuído neste repositório e não tem assinatura digital. Gere o seu próprio
-executável a partir do código com `construir_exe.bat`.
+executável a partir do código com `scripts\construir_exe.bat`.

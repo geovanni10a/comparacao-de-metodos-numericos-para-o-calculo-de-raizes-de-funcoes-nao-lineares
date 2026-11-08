@@ -7,7 +7,7 @@ Critérios de parada, comuns aos três para a comparação ser justa:
 - |x_k - x_(k-1)| <= tol (na Bisseção, a meia-largura do intervalo), ou f(x_k) == 0: convergiu;
 - limite de iterações ou falha numérica: não convergiu, com o motivo em Resultado.parada.
 
-Reprodução: o programa é determinístico. Rodar `python raizes.py` repete todos os
+Reprodução: o programa é determinístico. Rodar `python -m raizes_numericas.metodos` repete todos os
 experimentos com os parâmetros fixos em TOL, MAX_ITER e FUNCOES.
 
 Este módulo usa só a biblioteca padrão do Python.

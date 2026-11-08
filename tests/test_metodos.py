@@ -1,8 +1,8 @@
 import math
 import unittest
 
-from analise import RAIZES_REFERENCIA
-from raizes import (
+from raizes_numericas.analise import RAIZES_REFERENCIA
+from raizes_numericas.metodos import (
     FUNCOES,
     PARADA_DERIVADA_NULA,
     PARADA_DESCONTINUIDADE,

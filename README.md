@@ -11,7 +11,7 @@ Demonstração computacional que implementa e compara os métodos da **Bisseçã
 resultados verificáveis. O projeto foi desenvolvido para apresentação em uma feira científica de
 Matemática.
 
-![Interface gráfica mostrando a tabela de resultados e o gráfico de x³ − x − 2 com a raiz destacada](figuras/interface.png)
+![Interface gráfica mostrando a tabela de resultados e o gráfico de x³ − x − 2 com a raiz destacada](docs/imagens/interface.png)
 
 ## Sumário
 
@@ -44,7 +44,7 @@ diferem no que exigem da função, na velocidade e nas garantias de convergênci
 As funções estudadas são `x³ − x − 2`, `cos(x) − x` e `e^(−x) − x`, com tolerância de `1e-12`.
 
 A fundamentação completa, com demonstrações, variáveis, interpretação e referências, está em
-[EXPLICACAO.md](EXPLICACAO.md).
+[EXPLICACAO.md](docs/EXPLICACAO.md).
 
 ## Funcionalidades
 
@@ -89,9 +89,9 @@ Os intervalos da Bisseção contêm a raiz por construção, então os 100% dela
 Em `x³ − 2x + 2` com `x0 = 0`, por exemplo, Newton-Raphson entra em ciclo, e em `(x − 1)²` a Bisseção
 não se aplica, pois não há troca de sinal.
 
-![Três gráficos com as funções estudadas e a raiz de cada uma destacada](figuras/funcoes_e_raizes.png)
+![Três gráficos com as funções estudadas e a raiz de cada uma destacada](resultados/figuras/funcoes_e_raizes.png)
 
-![Gráfico de barras com o número de iterações de cada método em cada função](figuras/iteracoes.png)
+![Gráfico de barras com o número de iterações de cada método em cada função](resultados/figuras/iteracoes.png)
 
 ## Como começar
 
@@ -111,7 +111,7 @@ cd comparacao-de-metodos-numericos-para-o-calculo-de-raizes-de-funcoes-nao-linea
 ```
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install -e .
 ```
 
 ## Como usar
@@ -119,25 +119,25 @@ python -m pip install -r requirements.txt
 Executar experimentos, análise, verificação, exportação e gráficos:
 
 ```bash
-python main.py
+python -m raizes_numericas
 ```
 
 Abrir a interface gráfica:
 
 ```bash
-python interface.py
+python -m raizes_numericas.interface
 ```
 
 Rodar os testes:
 
 ```bash
-python -m unittest
+python -m unittest discover -s tests
 ```
 
 Gerar o executável `dist\RaizesNumericas.exe`, que abre sem Python instalado:
 
 ```bash
-construir_exe.bat
+scripts\construir_exe.bat
 ```
 
 O executável não tem assinatura digital, portanto o Windows pode exibir um aviso do SmartScreen.
@@ -145,7 +145,7 @@ O executável não tem assinatura digital, portanto o Windows pode exibir um avi
 Usar os métodos em outro programa:
 
 ```python
-from raizes import FUNCOES, comparar
+from raizes_numericas.metodos import FUNCOES, comparar
 
 for r in comparar(**FUNCOES["cos(x) - x"]):
     print(r.metodo, r.raiz, r.iteracoes)
@@ -161,23 +161,27 @@ Secante 0.7390851332151607 6
 
 ```text
 .
-├── raizes.py             # Métodos numéricos e funções estudadas
-├── analise.py            # Análise comparativa
-├── verificacao.py        # Verificação matemática e exportação de dados
-├── graficos.py           # Figuras em Matplotlib
-├── interface.py          # Interface gráfica
-├── main.py               # Executa tudo com um comando
-├── construir_exe.bat     # Gera o executável
-├── EXPLICACAO.md         # Texto acadêmico completo
-├── teste_*.py            # Testes automáticos
-├── figuras/              # Imagens geradas
-└── resultados/           # Dados brutos em CSV
+├── src/raizes_numericas/     # Código do programa
+│   ├── __main__.py           # Executa tudo com um comando
+│   ├── metodos.py            # Métodos numéricos e funções estudadas
+│   ├── analise.py            # Análise comparativa
+│   ├── verificacao.py        # Verificação matemática e exportação de dados
+│   ├── graficos.py           # Figuras em Matplotlib
+│   └── interface.py          # Interface gráfica
+├── tests/                    # Testes automáticos
+├── docs/                     # Texto acadêmico e imagens da documentação
+├── resultados/
+│   ├── dados/                # Dados brutos em CSV
+│   └── figuras/              # Gráficos gerados
+├── scripts/                  # Geração do executável
+├── .github/                  # CI e modelos de issue e pull request
+└── pyproject.toml            # Metadados e dependências
 ```
 
 ## Metodologia e reprodutibilidade
 
 O experimento controla a tolerância, o limite de iterações e o critério de parada. Não há números
-aleatórios, então `python main.py` repete os resultados.
+aleatórios, então `python -m raizes_numericas` repete os resultados.
 
 | Verificação automática | Quantidade | Resultado |
 |---|---|---|
@@ -188,8 +192,8 @@ aleatórios, então `python main.py` repete os resultados.
 | Erro da Secante segue `C · e_k · e_(k−1)` | 3 | Desvio máximo de 0,10% |
 | Duas execuções produzem resultados idênticos | 1 | Aprovada |
 
-Os dados de cada método estão em [resultados/resultados.csv](resultados/resultados.csv), e os de cada
-iteração em [resultados/historico.csv](resultados/historico.csv).
+Os dados de cada método estão em [resultados/dados/resultados.csv](resultados/dados/resultados.csv), e os de cada
+iteração em [resultados/dados/historico.csv](resultados/dados/historico.csv).
 
 ## Limitações
 
@@ -199,7 +203,7 @@ iteração em [resultados/historico.csv](resultados/historico.csv).
 - A interface aceita somente as três funções do estudo.
 - O executável não foi testado em computador sem Python instalado.
 
-A lista completa está em [EXPLICACAO.md](EXPLICACAO.md#10-limitações-do-experimento).
+A lista completa está em [EXPLICACAO.md](docs/EXPLICACAO.md#10-limitações-do-experimento).
 
 ## Suporte
 
